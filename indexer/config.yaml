@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: rollup-appInbox
+networks:
+- id: 11155111
+  start_block: 0
+  contracts:
+  - name: AppInbox
+    address:
+    - 0x872dbCFd4a16b2309Db9f84B8Cc496552DCAc1ae
+    handler: src/EventHandlers.ts
+    events:
+    - event: BatchSubmitted(uint256 indexed batchHeight, bytes32 indexed batchRoot, uint256 indexed lastBlockHeight, uint256 firstBlockHeight, bytes32 stateRoot)
+    - event: OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
+    - event: RegisteredSTF(bytes32 stateMachineHash, bytes32 genesisStateHash, address operator)
+    - event: TicketCreated(uint256 indexed ticketNumber, address indexed sender, bytes32 indexed identifier, bytes message)
